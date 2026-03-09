@@ -1,6 +1,50 @@
+name: Build ZMK Firmware
+
 on: [push, pull_request, workflow_dispatch]
 
 jobs:
   build:
-    uses: zmkfirmware/zmk/.github/workflows/build-user-config.yml@main
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Install west
+        run: pip install west==1.0.0
+
+      - name: Initialize west workspace
+        run: |
+          west init -l config
+          west update
+
+      - name: Export Zephyr CMake
+        run: west zephyr-export
+
+      - name: Install Python dependencies
+        run: pip install -r zephyr/scripts/requirements.txt
+
+      - name: Build left
+        run: |
+          west build -s zmk/app -b seeeduino_xiao_ble \
+            -- -DZMK_CONFIG=$(pwd)/config -DSHIELD=pinkeybd_left
+
+      - name: Build right
+        run: |
+          west build -s zmk/app -b seeeduino_xiao_ble \
+            -d build/right \
+            -- -DZMK_CONFIG=$(pwd)/config -DSHIELD=pinkeybd_right
+
+      - name: Upload firmware
+        uses: actions/upload-artifact@v4
+        with:
+          name: firmware
+          path: |
+            build/zephyr/zmk.uf2
+            build/right/zephyr/zmk.uf2
     

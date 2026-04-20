@@ -28,10 +28,10 @@
 
         default_layer {
             bindings = <
-&kp Q       &kp W             &kp E      &kp R           &kp T      &kp ESC           &kp Y      &kp U             &kp I      &kp O       &kp P
-&kp A       &kp S             &kp D      &kp F           &kp G      &kp SCROLLLOCK    &kp H      &kp J             &kp K      &kp L       &kp SEMICOLON
-&kp Z       &kp X             &kp C      &kp V           &kp MINUS  &kp TAB           &kp N      &kp M             &kp COMMA  &kp PERIOD  &kp SLASH
-&kp LSHIFT  &lt 1 LANGUAGE_1  &kp SPACE  &lt 6 LEFT_WIN  &kp B      &kp LEFT_CONTROL  &kp ENTER  &lt 3 LANGUAGE_2  &mo 2
+&kp Q       &kp W             &kp E      &kp R           &kp T      &kp ESC        &kp Y        &kp U             &kp I      &kp O       &kp P
+&kp A       &kp S             &kp D      &kp F           &kp G      &to 1          &kp H        &kp J             &kp K      &kp L       &kp SEMICOLON
+&kp Z       &kp X             &kp C      &kp V           &kp B      &kp TAB        &kp N        &kp M             &kp COMMA  &kp PERIOD  &kp SLASH
+&kp LSHIFT  &lt 1 LANGUAGE_1  &kp SPACE  &lt 6 LEFT_WIN  &kp SLASH  &kp BACKSPACE  &lt 3 ENTER  &lt 3 LANGUAGE_2  &mo 2
             >;
 
             sensor-bindings = <&rot_kp PG_DN PG_UP>;
@@ -129,7 +129,7 @@
 };
 
 // ▼ここからオートマウスレイヤーの設定▼
-&trackball {
-    input-processors = <&zip_temp_layer 6 500>;
-};
+
+&trackball { input-processors = <&zip_temp_layer 6 500>; };
+
 // ▲ここまで▲

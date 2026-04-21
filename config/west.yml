@@ -8,6 +8,8 @@ manifest:
       url-base: https://github.com/zephyrproject-rtos
     - name: ktkhshi
       url-base: https://github.com/ktkhshi
+    - name: badjeff                              # ← 追加
+      url-base: https://github.com/badjeff    
   projects:
     - name: zmk
       remote: zmkfirmware
@@ -46,7 +48,7 @@ manifest:
       path: modules/msgs/zmk-studio-messages
       remote: zmkfirmware
     - name: zmk-pmw3610-driver
-      remote: ktkhshi
+      remote: badjeff
       revision: main
   self:
     west-commands: scripts/west-commands.yml

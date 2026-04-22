@@ -48,7 +48,10 @@ manifest:
       path: modules/msgs/zmk-studio-messages
       remote: zmkfirmware
     - name: zmk-pmw3610-driver
-      url: https://github.com/badjeff/zmk-pmw3610-driver
+      remote: ktkhshi
       revision: main
+    input-processors:
+    type: phandles
+    required: false
   self:
     west-commands: scripts/west-commands.yml
